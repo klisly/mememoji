@@ -22,11 +22,11 @@ batch_size = 128
 nb_epoch = 50
 
 # setup info:
-print 'X_train shape: ', X_train.shape # (n_sample, 1, 48, 48)
-print 'y_train shape: ', y_train.shape # (n_sample, n_categories)
-print '  img size: ', X_train.shape[2], X_train.shape[3]
-print 'batch size: ', batch_size
-print '  nb_epoch: ', nb_epoch
+print('X_train shape: ', X_train.shape)  # (n_sample, 1, 48, 48)
+print('y_train shape: ', y_train.shape)  # (n_sample, n_categories)
+print('  img size: ', X_train.shape[2], X_train.shape[3])
+print('batch size: ', batch_size)
+print('  nb_epoch: ', nb_epoch)
 
 # model architecture:
 model = Sequential()
@@ -53,7 +53,7 @@ model.add(Dense(2, activation='softmax'))
 
 # optimizer:
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-print 'Training....'
+print('Training....')
 model.fit(X_train, y_train, nb_epoch=nb_epoch, batch_size=batch_size,
           validation_split=0.3, shuffle=True, verbose=1)
 
@@ -61,9 +61,9 @@ model.fit(X_train, y_train, nb_epoch=nb_epoch, batch_size=batch_size,
 
 # model result:
 loss_and_metrics = model.evaluate(X_train, y_train, batch_size=batch_size, verbose=1)
-print 'Done!'
-print 'Loss: ', loss_and_metrics[0]
-print ' Acc: ', loss_and_metrics[1]
+print('Done!')
+print('Loss: ', loss_and_metrics[0])
+print(' Acc: ', loss_and_metrics[1])
 
 # model logging:
 notes = 'medium set 100'

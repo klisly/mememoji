@@ -12,9 +12,9 @@ y_train = np.load(y_fname)
 from cnn6_aug import cnn_architecture
 
 dropout = 0.4
-convnets = [(32,3),(64,3),(128,3)]+
+convnets = [(32,3),(64,3),(128,3)]
 dense = [512,2]
-print 'Loading data...'
+print('Loading data...')
 cnn_architecture(X_train, y_train, conv_arch=convnets, dense=dense, dropout=dropout, batch_size=128, nb_epoch=100, dirpath = '../data/results/')
 #
 # from maxout_cnn6 import cnn_architecture

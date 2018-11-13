@@ -10,14 +10,14 @@ import time
 import sys
 
 def describe(X_shape, y_shape, batch_size, dropout, nb_epoch, conv_arch, dense):
-    print ' X_train shape: ', X_shape # (n_sample, 1, 48, 48)
-    print ' y_train shape: ', y_shape # (n_sample, n_categories)
-    print '      img size: ', X_shape[2], X_shape[3]
-    print '    batch size: ', batch_size
-    print '      nb_epoch: ', nb_epoch
-    print '       dropout: ', dropout
-    print 'conv architect: ', conv_arch
-    print 'neural network: ', dense
+    print( ' X_train shape: ', X_shape) # (n_sample, 1, 48, 48)
+    print( ' y_train shape: ', y_shape )# (n_sample, n_categories)
+    print( '      img size: ', X_shape[2], X_shape[3])
+    print ('    batch size: ', batch_size)
+    print ('      nb_epoch: ', nb_epoch)
+    print ('       dropout: ', dropout)
+    print ('conv architect: ', conv_arch)
+    print ('neural network: ', dense)
 
 def logging(model, starttime, batch_size, nb_epoch, conv_arch,dense, dropout,
             X_shape, y_shape, train_acc, val_acc, dirpath):
@@ -82,7 +82,7 @@ def cnn_architecture(X_train, y_train, conv_arch=[(32,3),(64,3),(128,3)],
         early_stopping = EarlyStopping(monitor='val_loss', patience=patience, verbose=1)
         callbacks.append(early_stopping)
 
-    print 'Training....'
+    print ('Training....')
     # fits the model on batches with real-time data augmentation:
     # hist = model.fit_generator(datagen.flow(X_train, y_train, batch_size=batch_size),
     #                 samples_per_epoch=len(X_train), nb_epoch=nb_epoch, validation_data=(X_test,y_test), callbacks=callbacks, verbose=1)
@@ -95,10 +95,10 @@ def cnn_architecture(X_train, y_train, conv_arch=[(32,3),(64,3),(128,3)],
     train_val_accuracy = hist.history
     train_acc = train_val_accuracy['acc']
     val_acc = train_val_accuracy['val_acc']
-    print '          Done!'
-    print '     Train acc: ', train_acc[-1]
-    print 'Validation acc: ', val_acc[-1]
-    print ' Overfit ratio: ', val_acc[-1]/train_acc[-1]
+    print ('          Done!')
+    print ('     Train acc: ', train_acc[-1])
+    print ('Validation acc: ', val_acc[-1])
+    print (' Overfit ratio: ', val_acc[-1]/train_acc[-1])
 
     logging(model, starttime, batch_size, nb_epoch, conv_arch, dense,
             dropout, X_shape, y_shape, train_acc, val_acc, dirpath)
@@ -111,6 +111,6 @@ if __name__ == '__main__':
     y_fname = '../data/y_train6_5pct.npy'
     X_train = np.load(X_fname)
     y_train = np.load(y_fname)
-    print 'Loading data...'
+    print ('Loading data...')
 
     cnn_architecture(X_train, y_train, conv_arch=[(32,3),(64,3),(128,3)], dense=[64,2], batch_size=256, nb_epoch=5, dirpath = '../data/results/')
